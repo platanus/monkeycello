@@ -1,4 +1,5 @@
-# Ledgerizer Demo 
+# Monkeycello
+
 This is a Rails application, initially generated using [Potassium](https://github.com/platanus/potassium) by Platanus.
 
 ## Local installation
@@ -15,13 +16,6 @@ The script will do the following among other things:
 - Install the dependecies
 - Create a docker container for your database
 - Prepare your database
-- Adds heroku remotes
-
-After the app setup is done you can run it with [Heroku Local]
-
-    $ heroku local
-
-[Heroku Local]: https://devcenter.heroku.com/articles/heroku-local
 
 
 ## Continuous Integrations
