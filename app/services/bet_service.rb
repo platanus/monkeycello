@@ -20,6 +20,11 @@ class BetService < PowerTypes::Service.new
     Withdrawal.all.each { |withdrawal| RegisterWithdrawal.for(withdrawal: withdrawal) }
   end
 
+  def print_like_a_cartola(account)
+    tp account.lines, :id, :entry_time, :account_name, :document_id, :document_type,
+      :entry_code, "amount.format", "balance.format"
+  end
+
   private
 
   def destroy_all
