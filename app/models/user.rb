@@ -7,4 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :casino
+
+  def wallet_account
+    accounts.find_by(name: :wallet)
+  end
 end
