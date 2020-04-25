@@ -5,9 +5,13 @@ Ledgerizer.setup do |conf|
 
     # casino incomes for withdrawal services
     conf.income :withdrawal_fees
+
     # where monkeys keep their betting chips. Is a liability for the casino, because the casino
     # should pay back the equivalent in bananas.
     conf.liability :wallet
+
+    # where monkey puts their chips during a bet
+    conf.liability :bet_table
 
     # when monkeys exchange bananas for chips
     conf.entry :user_deposit_bananas, document: :deposit do
