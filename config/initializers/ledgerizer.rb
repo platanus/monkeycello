@@ -6,5 +6,14 @@ Ledgerizer.setup do |conf|
     # where monkeys keep their betting chips. Is a liability for the casino, because the casino
     # should pay back the equivalent bananas.
     conf.liability :wallet
+
+    # when monkeys exchange bananas for chips
+    conf.entry :deposit_bananas, document: :deposit do
+      # increases the amount of bananas in the vault
+      conf.debit account: :vault
+
+      # increases debt of bananas for a specific monkey
+      conf.credit account: :wallet, accountable: :monkey
+    end
   end
 end
