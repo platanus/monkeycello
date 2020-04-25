@@ -17,5 +17,17 @@ Ledgerizer.setup do |conf|
       # increases debt of bananas for a specific monkey
       conf.credit account: :wallet, accountable: :user
     end
+
+    # when monkeys change back their chips for bananas
+    conf.entry :user_withdrawal_bananas, document: :withdrawal do
+      # decreases debt of bananas to a specific monkey
+      conf.debit account: :wallet, accountable: :user
+
+      # decreases the amount of bananas in the vault
+      conf.credit account: :vault
+
+      # increases casino's incomes
+      conf.credit account: :withdrawal_fees
+    end
   end
 end
