@@ -12,14 +12,29 @@ class BetService < PowerTypes::Service.new
     play # run 10 random bets
   end
 
+  def ledgerize_all
+    reset_ledgerizer_accounts
+
+    Deposit.all.each { |deposit| RegisterDeposit.for(deposit: deposit) }
+    Bet.all.each { |bet| RegisterBet.for(bet: bet) }
+    Withdrawal.all.each { |withdrawal| RegisterWithdrawal.for(withdrawal: withdrawal) }
+  end
+
   private
 
   def destroy_all
+    reset_ledgerizer_accounts
     Casino.destroy_all
     Deposit.destroy_all
     Withdrawal.destroy_all
     User.destroy_all
     Bet.destroy_all
+  end
+
+  def reset_ledgerizer_accounts
+    Ledgerizer::Account.destroy_all
+    Ledgerizer::Entry.destroy_all
+    Ledgerizer::Line.destroy_all
   end
 
   def create_casino
