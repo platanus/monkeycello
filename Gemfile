@@ -21,6 +21,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'strong_migrations'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'power_api'
 
 group :development do
   gem 'annotate'
@@ -45,9 +46,12 @@ group :development, :test do
   gem 'faker'
   gem 'guard-rspec', require: false
   gem 'pry-byebug'
+  gem 'rswag-specs'
   gem 'pry-rails'
   gem 'rspec-nc', require: false
   gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
 end
 
 group :production, :development, :test do

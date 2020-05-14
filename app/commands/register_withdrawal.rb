@@ -24,7 +24,7 @@ class RegisterWithdrawal < PowerTypes::Command.new(:withdrawal)
   end
 
   def casino
-    Casino.first
+    @withdrawal.user.casino
   end
 
 end

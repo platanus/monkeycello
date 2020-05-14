@@ -1,6 +1,7 @@
 class RegisterBet < PowerTypes::Command.new(:bet)
   include Ledgerizer::Execution::Dsl
 
+
   def perform
     ledgerize_initial_bet
     ledgerize_jackpot
@@ -14,7 +15,7 @@ class RegisterBet < PowerTypes::Command.new(:bet)
       document: @bet,
       datetime: @bet.created_at
     ) do
-      User.all.each do |user|
+      users_casino.each do |user|
         debit(account: :wallet, accountable: user, amount: bet_bananas)
       end
 
@@ -34,7 +35,7 @@ class RegisterBet < PowerTypes::Command.new(:bet)
   end
 
   def jackpot_bananas
-    Money.from_amount(User.count * 5, 'BAN')
+    Money.from_amount(amount_jackpot, 'BAN')
   end
 
   def bet_bananas
@@ -42,6 +43,15 @@ class RegisterBet < PowerTypes::Command.new(:bet)
   end
 
   def casino
-    Casino.first
+    @bet.casino
+  end
+
+  def users_casino
+    casino.users.all
+  end
+
+  def amount_jackpot
+    casino.users.length * 5
+
   end
 end

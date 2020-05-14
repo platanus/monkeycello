@@ -1,0 +1,6 @@
+<p>
+  <strong>Monkeycello</strong>
+  <%= @user.email %>
+  <%= @user.wallet_account.balance.format %>
+  <%= render partial: 'deposits/form', locals: {user: @user} %>
+</p>

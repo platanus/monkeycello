@@ -1,0 +1,37 @@
+<h1><%= @casino.edition ? 'Monkeycello - ' + @casino.edition : 'Monkeycello'%></h1>
+<strong><%= @casino.vault_account ? 'Bóveda' + @casino.vault_account.balance.format : 'Nada aún' %></<strong>
+
+<h2>Players</h2>
+
+<div id="app">
+  {{ winner }}
+  <button v-on:click="bet">Apostar</button>
+</div>
+ 
+<table>
+  <tr>
+    <th>ID </th>
+    <th>Email 🙉</th>
+    <th>Bananas</th>
+    <th>Depositar</th>
+    <th>Retirar</th>
+
+  </tr>
+ 
+  <% @casino.users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.email %></td>
+      <td><%= user.wallet_account.balance.format %></td>
+      <td><%= render partial: 'deposits/form', locals: {user: user} %></td>
+      <td><%= render partial: 'withdrawals/form', locals: {user: user} %></td>
+      <td><%= link_to 'Ver', user_path(user) %></td>
+      <td><%= link_to 'Eliminar', user_path(user),
+              method: :delete,
+              data: { confirm: 'Seguro?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Todos los Monkeycellos', casinos_path %>
+

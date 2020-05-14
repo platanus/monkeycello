@@ -1,0 +1,929 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "basePath": "/api/v1",
+  "definitions": {
+    "bet": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "type": {
+          "type": "string",
+          "example": "bet"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "winner_id": {
+              "type": "integer",
+              "example": 666,
+              "x-nullable": true
+            },
+            "casino_id": {
+              "type": "integer",
+              "example": 666,
+              "x-nullable": true
+            },
+            "created_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "updated_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            }
+          },
+          "required": [
+
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "attributes"
+      ]
+    },
+    "bets_collection": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bet"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "bet_resource": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/bet"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "casino": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "type": {
+          "type": "string",
+          "example": "casino"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Some name",
+              "x-nullable": true
+            },
+            "created_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "updated_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "edition": {
+              "type": "string",
+              "example": "Some edition",
+              "x-nullable": true
+            }
+          },
+          "required": [
+
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "attributes"
+      ]
+    },
+    "casinos_collection": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/casino"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "casino_resource": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/casino"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "withdrawal": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "type": {
+          "type": "string",
+          "example": "withdrawal"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "integer",
+              "example": 666,
+              "x-nullable": true
+            },
+            "bananas": {
+              "type": "integer",
+              "example": 666,
+              "x-nullable": true
+            },
+            "created_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "updated_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            }
+          },
+          "required": [
+
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "attributes"
+      ]
+    },
+    "withdrawals_collection": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/withdrawal"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "withdrawal_resource": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/withdrawal"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "deposit": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "type": {
+          "type": "string",
+          "example": "deposit"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "integer",
+              "example": 666,
+              "x-nullable": true
+            },
+            "bananas": {
+              "type": "integer",
+              "example": 666,
+              "x-nullable": true
+            },
+            "created_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "updated_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            }
+          },
+          "required": [
+
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "attributes"
+      ]
+    },
+    "deposits_collection": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/deposit"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "deposit_resource": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/deposit"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "type": {
+          "type": "string",
+          "example": "user"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "example": "Some email"
+            },
+            "encrypted_password": {
+              "type": "string",
+              "example": "Some encrypted_password",
+              "x-nullable": true
+            },
+            "reset_password_token": {
+              "type": "string",
+              "example": "Some reset_password_token",
+              "x-nullable": true
+            },
+            "reset_password_sent_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "remember_created_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "created_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "updated_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "casino_id": {
+              "type": "integer",
+              "example": 666,
+              "x-nullable": true
+            }
+          },
+          "required": [
+            "email"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "attributes"
+      ]
+    },
+    "users_collection": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/user"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "user_resource": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/user"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  },
+  "paths": {
+    "/users/{user_id}/bets": {
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Bets",
+        "description": "Retrieves all the bets",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Bets retrieved",
+            "schema": {
+              "$ref": "#/definitions/bets_collection"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates Bet",
+        "description": "Creates Bet",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bet",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "bet created"
+          }
+        }
+      }
+    },
+    "/bets/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Bet",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "bet retrieved",
+            "schema": {
+              "$ref": "#/definitions/bet_resource"
+            }
+          },
+          "404": {
+            "description": "invalid bet id"
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates Bet",
+        "description": "Updates Bet",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bet",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "bet updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes Bet",
+        "produces": [
+          "application/json"
+        ],
+        "description": "Deletes specific bet",
+        "responses": {
+          "204": {
+            "description": "bet deleted"
+          },
+          "404": {
+            "description": "bet not found"
+          }
+        }
+      }
+    },
+    "/casinos": {
+      "get": {
+        "summary": "Retrieves Casinos",
+        "description": "Retrieves all the casinos",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Casinos retrieved",
+            "schema": {
+              "$ref": "#/definitions/casinos_collection"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates Casino",
+        "description": "Creates Casino",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "casino",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "casino created"
+          }
+        }
+      }
+    },
+    "/casinos/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Casino",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "casino retrieved",
+            "schema": {
+              "$ref": "#/definitions/casino_resource"
+            }
+          },
+          "404": {
+            "description": "invalid casino id"
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates Casino",
+        "description": "Updates Casino",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "casino",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "casino updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes Casino",
+        "produces": [
+          "application/json"
+        ],
+        "description": "Deletes specific casino",
+        "responses": {
+          "204": {
+            "description": "casino deleted"
+          },
+          "404": {
+            "description": "casino not found"
+          }
+        }
+      }
+    },
+    "/users/{user_id}/deposits": {
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Deposits",
+        "description": "Retrieves all the deposits",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Deposits retrieved",
+            "schema": {
+              "$ref": "#/definitions/deposits_collection"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates Deposit",
+        "description": "Creates Deposit",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "deposit",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "deposit created"
+          }
+        }
+      }
+    },
+    "/deposits/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Deposit",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "deposit retrieved",
+            "schema": {
+              "$ref": "#/definitions/deposit_resource"
+            }
+          },
+          "404": {
+            "description": "invalid deposit id"
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates Deposit",
+        "description": "Updates Deposit",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "deposit",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "deposit updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes Deposit",
+        "produces": [
+          "application/json"
+        ],
+        "description": "Deletes specific deposit",
+        "responses": {
+          "204": {
+            "description": "deposit deleted"
+          },
+          "404": {
+            "description": "deposit not found"
+          }
+        }
+      }
+    },
+    "/casinos/{casino_id}/users": {
+      "parameters": [
+        {
+          "name": "casino_id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Users",
+        "description": "Retrieves all the users",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Users retrieved",
+            "schema": {
+              "$ref": "#/definitions/users_collection"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates User",
+        "description": "Creates User",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "user created"
+          },
+          "400": {
+            "description": "invalid attributes"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves User",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "user retrieved",
+            "schema": {
+              "$ref": "#/definitions/user_resource"
+            }
+          },
+          "404": {
+            "description": "invalid user id"
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates User",
+        "description": "Updates User",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user updated"
+          },
+          "400": {
+            "description": "invalid attributes"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes User",
+        "produces": [
+          "application/json"
+        ],
+        "description": "Deletes specific user",
+        "responses": {
+          "204": {
+            "description": "user deleted"
+          },
+          "404": {
+            "description": "user not found"
+          }
+        }
+      }
+    },
+    "/users/{user_id}/withdrawals": {
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Withdrawals",
+        "description": "Retrieves all the withdrawals",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Withdrawals retrieved",
+            "schema": {
+              "$ref": "#/definitions/withdrawals_collection"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates Withdrawal",
+        "description": "Creates Withdrawal",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "withdrawal",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "withdrawal created"
+          }
+        }
+      }
+    },
+    "/withdrawals/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Withdrawal",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "withdrawal retrieved",
+            "schema": {
+              "$ref": "#/definitions/withdrawal_resource"
+            }
+          },
+          "404": {
+            "description": "invalid withdrawal id"
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates Withdrawal",
+        "description": "Updates Withdrawal",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "withdrawal",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "withdrawal updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes Withdrawal",
+        "produces": [
+          "application/json"
+        ],
+        "description": "Deletes specific withdrawal",
+        "responses": {
+          "204": {
+            "description": "withdrawal deleted"
+          },
+          "404": {
+            "description": "withdrawal not found"
+          }
+        }
+      }
+    }
+  }
+}

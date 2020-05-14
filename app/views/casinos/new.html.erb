@@ -1,0 +1,19 @@
+<h1>Creando un casino</h1>
+<%= form_with scope: :casino, url: casinos_path, local: true do |form| %>
+<p>
+    <%= form.label 'Edición' %><br>
+    <%= form.text_field :edition %>
+  </p>
+  <p>
+    <%= form.label 'Número de players' %><br>
+    <%= form.text_field :quantity_players %>
+  </p>
+  <p>
+    <%= form.label 'Bananas iniciales 🍌' %><br>
+    <%= form.text_field :bananas %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

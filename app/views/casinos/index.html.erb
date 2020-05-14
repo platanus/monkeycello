@@ -1,0 +1,30 @@
+<h1>Listing Monkeycellos 🙈🙊🙉</h1>
+ 
+<table>
+  <tr>
+    <th>ID </th>
+    <th>Edition</th>
+    <th>Bóveda</th>
+    <th>Players 🙊</th>
+    <th>Ganancia x retiros</th>
+
+  </tr>
+ 
+  <% @casinos.each do |casino| %>
+    <tr>
+      <td><%= casino.id %></td>
+      <td><%= casino.edition %></td>
+      <td><%= casino.vault_account ? casino.vault_account.balance.format : 'Nada aún' %></td>
+      <td><%= casino.users.length() %> </td>
+      <td><%= casino.withdrawal_fees_account ? casino.withdrawal_fees_account.balance.format : 'Nada aún' %></td>
+      <td><%= link_to 'Ver', casino_path(casino) %></td>
+      <td><%= link_to 'Eliminar', casino_path(casino), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Agregar casino', new_casino_path %>
+
+
+
+

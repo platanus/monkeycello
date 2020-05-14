@@ -1,0 +1,8 @@
+<%= form_with(model: [ user, user.withdrawals.build ], local: true) do |form| %>
+  <p>
+    <%= form.text_field :bananas %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

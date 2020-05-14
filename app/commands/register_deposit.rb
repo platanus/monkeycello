@@ -19,6 +19,6 @@ class RegisterDeposit < PowerTypes::Command.new(:deposit)
   end
 
   def casino
-    Casino.first
+    @deposit.user.casino
   end
 end
