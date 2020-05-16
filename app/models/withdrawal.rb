@@ -6,6 +6,10 @@ class Withdrawal < ApplicationRecord
   def bananas
     Money.from_amount(amount, 'BAN')
   end
+
+  def fee
+    Money.from_amount(1, 'BAN')
+  end
 end
 
 # == Schema Information
