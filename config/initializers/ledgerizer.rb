@@ -3,6 +3,9 @@ Ledgerizer.setup do |conf|
     # where the casino keeps the bananas (like a bank account)
     conf.asset :vault
 
+    # casino incomes for withdrawal services
+    conf.income :withdrawal_fees
+
     # where monkeys keep their betting chips. Is a liability for the casino, because the casino
     # should pay back the equivalent bananas.
     conf.liability :wallet
