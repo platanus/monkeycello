@@ -17,10 +17,6 @@ The script will do the following among other things:
 - Prepare your database
 - Adds heroku remotes
 
-After the app setup is done you can run it with [Heroku Local]
-
-    $ heroku local
-
 [Heroku Local]: https://devcenter.heroku.com/articles/heroku-local
 
 
