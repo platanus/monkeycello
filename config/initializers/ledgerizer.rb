@@ -42,5 +42,14 @@ Ledgerizer.setup do |conf|
       # increases debt on chips kept in the betting table
       conf.credit account: :bet_table
     end
+
+    # when the winner monkey receives the jackpot
+    conf.entry :receive_jackpot, document: :bet do
+      # decreases debt of bananas in the betting table
+      conf.debit account: :bet_table
+
+      # increases debt of bananas to a specific monkey (the winner)
+      conf.credit account: :wallet, accountable: :monkey
+    end
   end
 end
