@@ -33,5 +33,14 @@ Ledgerizer.setup do |conf|
       # increases casino's incomes
       conf.credit account: :withdrawal_fees
     end
+
+    # when monkeys move chips to the betting table
+    conf.entry :bet_bananas, document: :bet do
+      # decreases debt of bananas to a specific monkey
+      conf.debit account: :wallet, accountable: :monkey
+
+      # increases debt on chips kept in the betting table
+      conf.credit account: :bet_table
+    end
   end
 end
