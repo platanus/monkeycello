@@ -10,6 +10,9 @@ Ledgerizer.setup do |conf|
     # should pay back the equivalent bananas.
     conf.liability :wallet
 
+    # where monkey puts their chips during a bet
+    conf.liability :bet_table
+
     # when monkeys exchange bananas for chips
     conf.entry :deposit_bananas, document: :deposit do
       # increases the amount of bananas in the vault
