@@ -2,6 +2,10 @@ class Deposit < ApplicationRecord
   include LedgerizerDocument
 
   belongs_to :monkey
+
+  def bananas
+    Money.from_amount(amount, 'BAN')
+  end
 end
 
 # == Schema Information
