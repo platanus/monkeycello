@@ -1,4 +1,6 @@
 class Bet < ApplicationRecord
+  include LedgerizerDocument
+
   belongs_to :winner, class_name: "Monkey"
   belongs_to :casino
 end

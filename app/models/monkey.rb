@@ -1,4 +1,6 @@
 class Monkey < ApplicationRecord
+  include LedgerizerAccountable
+
   belongs_to :casino
 end
 

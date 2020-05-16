@@ -1,4 +1,6 @@
 class Casino < ApplicationRecord
+  include LedgerizerTenant
+
   has_many :monkeys
 end
 

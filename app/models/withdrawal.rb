@@ -1,4 +1,6 @@
 class Withdrawal < ApplicationRecord
+  include LedgerizerDocument
+
   belongs_to :monkey
 end
 
