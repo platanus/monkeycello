@@ -5,6 +5,9 @@ import '../css/application.css';
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#vue-app',
+    data: {
+      message: 'Victoria!',
+    },
     components: { App },
   });
 
