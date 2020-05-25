@@ -14,7 +14,6 @@ class Bet < ApplicationRecord
   end
 end
 
-
 # == Schema Information
 #
 # Table name: bets

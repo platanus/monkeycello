@@ -2,6 +2,9 @@ class Monkey < ApplicationRecord
   include LedgerizerAccountable
 
   belongs_to :casino
+  has_many :deposits, dependent: :destroy
+  has_many :withdrawals, dependent: :destroy
+  has_many :bets_won, class_name: "Bet", as: :winner, dependent: :destroy
 end
 
 # == Schema Information
