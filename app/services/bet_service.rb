@@ -10,18 +10,10 @@ class BetService < PowerTypes::Service.new
     create_monkeys_with_bananas # 5 monkeys, 100 bananas each
 
     play # run 10 random bets
-    ledgerize_all
+    reset_ledgerizer_accounts
   end
 
   private
-
-  def ledgerize_all
-    reset_ledgerizer_accounts
-
-    Deposit.all.each { |deposit| LedgerizeDeposit.for(deposit: deposit) }
-    Bet.all.each { |bet| LedgerizeBet.for(bet: bet) }
-    Withdrawal.all.each { |withdrawal| LedgerizeWithdrawal.for(withdrawal: withdrawal) }
-  end
 
   def destroy_all
     reset_ledgerizer_accounts

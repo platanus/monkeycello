@@ -1,4 +1,5 @@
 class Bet < ApplicationRecord
+  include PowerTypes::Observable
   include LedgerizerDocument
 
   belongs_to :winner, class_name: "Monkey"
@@ -12,7 +13,6 @@ class Bet < ApplicationRecord
     bananas_bet * Monkey.count
   end
 end
-
 
 # == Schema Information
 #
