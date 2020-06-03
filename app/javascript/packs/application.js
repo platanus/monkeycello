@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('app')) {
     return new Vue({
       el: '#app',
-      data: {
-        message: 'Victoria!',
-      },
       components: { CasinoForm },
     });
   }

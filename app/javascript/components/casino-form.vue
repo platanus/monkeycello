@@ -11,17 +11,22 @@
     <input
       id="monkeys"
       type="number"
+      min="0"
       v-model="casinoForm.monkeys"
     >
     <label for="bananas">Bananas iniciales</label>
     <input
       id="bananas"
       type="number"
+      min="10"
       v-model="casinoForm.bananas"
     >
-    <button @click="createCasino">
+    <button @click="checkForm">
       Crear
     </button>
+    <p v-if="error">
+      Ponle un nombre al casino
+    </p>
     {{ casinoForm.bananas }}
   </div>
 </template>
@@ -35,11 +40,16 @@ export default {
         monkeys: '',
         bananas: '',
       },
+      error: false,
     };
   },
   methods: {
-    createCasino() {
+    checkForm(e) {
       console.log('Me clickearon');
+      if (this.casinoForm.name === '') {
+        this.error = true;
+      }
+      e.preventDefault();
     },
   },
 };
