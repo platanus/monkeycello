@@ -1,15 +1,14 @@
 import Vue from 'vue/dist/vue.esm';
-import App from '../app.vue';
+import CasinoForm from '../components/casino-form.vue';
 import '../css/application.css';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    el: '#vue-app',
-    data: {
-      message: 'Victoria!',
-    },
-    components: { App },
-  });
+  if (document.getElementById('app')) {
+    return new Vue({
+      el: '#app',
+      components: { CasinoForm },
+    });
+  }
 
-  return app;
+  return null;
 });

@@ -1,0 +1,359 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "basePath": "/api/v1",
+  "definitions": {
+    "monkey": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "type": {
+          "type": "string",
+          "example": "monkey"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "casino_id": {
+              "type": "integer",
+              "example": 666,
+              "x-nullable": true
+            },
+            "name": {
+              "type": "string",
+              "example": "Some name",
+              "x-nullable": true
+            },
+            "created_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "updated_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            }
+          },
+          "required": [
+
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "attributes"
+      ]
+    },
+    "monkeys_collection": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/monkey"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "monkey_resource": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/monkey"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "casino": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "type": {
+          "type": "string",
+          "example": "casino"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Some name",
+              "x-nullable": true
+            },
+            "created_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            },
+            "updated_at": {
+              "type": "string",
+              "example": "1984-06-04 09:00",
+              "x-nullable": true
+            }
+          },
+          "required": [
+
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "attributes"
+      ]
+    },
+    "casinos_collection": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/casino"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "casino_resource": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/casino"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  },
+  "paths": {
+    "/casinos": {
+      "get": {
+        "summary": "Retrieves Casinos",
+        "description": "Retrieves all the casinos",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Casinos retrieved",
+            "schema": {
+              "$ref": "#/definitions/casinos_collection"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates Casino",
+        "description": "Creates Casino",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "casino",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "casino created"
+          }
+        }
+      }
+    },
+    "/casinos/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Casino",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "casino retrieved",
+            "schema": {
+              "$ref": "#/definitions/casino_resource"
+            }
+          },
+          "404": {
+            "description": "invalid casino id"
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates Casino",
+        "description": "Updates Casino",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "casino",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "casino updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes Casino",
+        "produces": [
+          "application/json"
+        ],
+        "description": "Deletes specific casino",
+        "responses": {
+          "204": {
+            "description": "casino deleted"
+          },
+          "404": {
+            "description": "casino not found"
+          }
+        }
+      }
+    },
+    "/casinos/{casino_id}/monkeys": {
+      "parameters": [
+        {
+          "name": "casino_id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Monkeys",
+        "description": "Retrieves all the monkeys",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Monkeys retrieved",
+            "schema": {
+              "$ref": "#/definitions/monkeys_collection"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates Monkey",
+        "description": "Creates Monkey",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "monkey",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "monkey created"
+          }
+        }
+      }
+    },
+    "/monkeys/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieves Monkey",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "monkey retrieved",
+            "schema": {
+              "$ref": "#/definitions/monkey_resource"
+            }
+          },
+          "404": {
+            "description": "invalid monkey id"
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates Monkey",
+        "description": "Updates Monkey",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "monkey",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "monkey updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes Monkey",
+        "produces": [
+          "application/json"
+        ],
+        "description": "Deletes specific monkey",
+        "responses": {
+          "204": {
+            "description": "monkey deleted"
+          },
+          "404": {
+            "description": "monkey not found"
+          }
+        }
+      }
+    }
+  }
+}
