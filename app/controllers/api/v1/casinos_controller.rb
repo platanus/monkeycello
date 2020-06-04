@@ -8,7 +8,9 @@ class Api::V1::CasinosController < Api::V1::BaseController
   end
 
   def create
-    respond_with Casino.create!(casino_params)
+    @casino = Casino.create!(casino_params)
+    create_players
+    respond_with @casino
   end
 
   def update
@@ -29,5 +31,17 @@ class Api::V1::CasinosController < Api::V1::BaseController
     params.require(:casino).permit(
       :name
     )
+  end
+
+  def create_players
+    n_monkeys = params['casino']['n_monkeys'].to_i
+    bananas = params['casino']['bananas'].to_i
+    n_monkeys.times.each do
+      monkey = Monkey.create!(
+        casino: @casino,
+        name: Faker::Superhero.name
+      )
+      Deposit.create(monkey: monkey, amount: bananas)
+    end
   end
 end
