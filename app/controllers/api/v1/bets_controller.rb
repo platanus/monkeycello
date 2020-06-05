@@ -1,34 +1,16 @@
 class Api::V1::BetsController < Api::V1::BaseController
-  def index
-    respond_with Bet.all
-  end
-
-  def show
-    respond_with bet
-  end
-
   def create
-
-    respond_with Bet.create!(bet_params)
-  end
-
-  def update
-    respond_with bet.update!(bet_params)
-  end
-
-  def destroy
-    respond_with bet.destroy!
+    @casino = this_casino
+    respond_with Bet.create(casino: @casino, winner: pick_random_monkey)
   end
 
   private
-
-  def bet
-    @bet ||= Bet.find_by!(id: params[:id])
+  
+  def this_casino
+    Casino.last
   end
 
-  def bet_params
-    params.require(:bet).permit(
-      :casino_id
-    )
+  def pick_random_monkey
+    Monkey.all.sample
   end
 end
