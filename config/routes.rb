@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
   scope path: '/api' do
     api_version(module: 'Api::V1', path: { value: 'v1' }, defaults: { format: 'json' }) do
+      resources :casinos do
+        resources :monkeys, only: [:index, :create]
+      end
+
+      resources :monkeys, only: [:show, :update, :destroy]
     end
   end
   mount Rswag::Api::Engine => '/api-docs'
   mount Rswag::Ui::Engine => '/api-docs'
   scope path: '/api' do
     api_version(module: "Api::V1", path: { value: "v1" }, defaults: { format: 'json' }) do
+      resources :casinos do
+        resources :monkeys, only: [:index, :create]
+      end
+
+      resources :monkeys, only: [:show, :update, :destroy]
     end
   end
   devise_for :admin_users, ActiveAdmin::Devise.config
