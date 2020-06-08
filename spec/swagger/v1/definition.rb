@@ -6,6 +6,9 @@ API_V1 = {
   },
   basePath: '/api/v1',
   definitions: {
+    casino: CASINO_SCHEMA,
+    casinos_collection: CASINOS_COLLECTION_SCHEMA,
+    casino_resource: CASINO_RESOURCE_SCHEMA,
     bet: BET_SCHEMA,
     bets_collection: BETS_COLLECTION_SCHEMA,
     bet_resource: BET_RESOURCE_SCHEMA,
