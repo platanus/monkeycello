@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'active_model_serializers', '~> 0.9.3'
 gem 'active_skin', github: 'SoftwareBrothers/active_skin'
 gem 'activeadmin', '~> 2.6'
 gem 'activeadmin_addons'
@@ -30,8 +29,8 @@ gem 'sidekiq-scheduler', '>= 3.0.1'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'strong_migrations'
 gem 'turbolinks', '~> 5'
-gem 'versionist'
 gem 'webpacker', '~> 4.0'
+gem 'power_api'
 
 group :development do
   gem 'annotate', '~> 3.0'
@@ -61,6 +60,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-nc', require: false
   gem 'rspec-rails'
+  gem 'rswag-specs'
   gem 'rubocop', '~> 0.82.0'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
