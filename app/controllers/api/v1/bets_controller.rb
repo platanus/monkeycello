@@ -1,6 +1,8 @@
 class Api::V1::BetsController < Api::V1::BaseController
   def index
-    respond_with bets
+    return casino.bets if params[:casino_id]
+
+    monkey.bets_won
   end
 
   def show
@@ -31,6 +33,10 @@ class Api::V1::BetsController < Api::V1::BaseController
 
   def casino
     @casino ||= Casino.find_by!(id: params[:casino_id])
+  end
+
+  def monkey
+    @monkey ||= Monkey.find_by!(id: params[:winner_id])
   end
 
   def bet_params
