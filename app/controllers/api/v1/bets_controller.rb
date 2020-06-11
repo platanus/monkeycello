@@ -10,7 +10,7 @@ class Api::V1::BetsController < Api::V1::BaseController
   end
 
   def create
-    respond_with bets.create!(bet_params)
+    respond_with bets.create!(winner: pick_random_monkey, casino: casino)
   end
 
   def update
@@ -44,5 +44,9 @@ class Api::V1::BetsController < Api::V1::BaseController
       :winner_id,
       :casino_id
     )
+  end
+
+  def pick_random_monkey
+    casino.monkeys.sample
   end
 end
