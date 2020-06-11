@@ -1,7 +1,5 @@
-class Api::V1::BaseController < ApplicationController
-  include ApiErrorConcern
-
-  self.responder = ApiResponder
-
-  respond_to :json
+class Api::V1::BaseController < Api::BaseController
+  before_action do
+    self.namespace_for_serializer = ::Api::V1
+  end
 end

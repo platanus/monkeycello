@@ -4,7 +4,7 @@ class Monkey < ApplicationRecord
   belongs_to :casino
   has_many :deposits, dependent: :destroy
   has_many :withdrawals, dependent: :destroy
-  has_many :bets_won, class_name: "Bet", as: :winner, dependent: :destroy
+  has_many :bets_won, class_name: "Bet", foreign_key: :winner_id, dependent: :destroy
 end
 
 # == Schema Information

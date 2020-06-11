@@ -2,6 +2,7 @@ class Casino < ApplicationRecord
   include LedgerizerTenant
 
   has_many :monkeys, dependent: :destroy
+  has_many :bets, dependent: :destroy
 end
 
 # == Schema Information

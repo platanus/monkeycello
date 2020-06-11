@@ -5,13 +5,6 @@ class Bet < ApplicationRecord
   belongs_to :winner, class_name: "Monkey"
   belongs_to :casino
 
-  def bananas_bet
-    Money.from_amount(5, 'BAN')
-  end
-
-  def bananas_jackpot
-    bananas_bet * Monkey.count
-  end
 end
 
 # == Schema Information
