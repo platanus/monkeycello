@@ -36,12 +36,12 @@ class Api::V1::BetsController < Api::V1::BaseController
   end
 
   def monkey
-    @monkey ||= Monkey.find_by!(id: params[:winner_id])
+    @monkey ||= Monkey.find_by!(id: params[:monkey_id])
   end
 
   def bet_params
     params.require(:bet).permit(
-      :winner_id,
+      :monkey_id,
       :casino_id
     )
   end
