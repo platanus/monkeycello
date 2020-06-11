@@ -10,26 +10,42 @@ class LedgerizeBet < PowerTypes::Command.new(:bet)
 
   def ledgerize_initial_bet
     execute_bet_bananas_entry(
-      tenant: @bet.casino,
+      tenant: casino,
       document: @bet,
       datetime: @bet.created_at
     ) do
-      Monkey.all.each do |monkey|
-        debit(account: :wallet, accountable: monkey, amount: @bet.bananas_bet)
+      monkeys.each do |monkey|
+        debit(account: :wallet, accountable: monkey, amount: bananas_bet)
       end
 
-      credit(account: :bet_table, amount: @bet.bananas_jackpot)
+      credit(account: :bet_table, amount: bananas_jackpot)
     end
   end
 
   def ledgerize_jackpot
     execute_receive_jackpot_entry(
-      tenant: @bet.casino,
+      tenant: casino,
       document: @bet,
       datetime: @bet.created_at
     ) do
-      debit(account: :bet_table, amount: @bet.bananas_jackpot)
-      credit(account: :wallet, accountable: @bet.winner, amount: @bet.bananas_jackpot)
+      debit(account: :bet_table, amount: bananas_jackpot)
+      credit(account: :wallet, accountable: @bet.winner, amount: bananas_jackpot)
     end
+  end
+
+  def casino
+    @bet.casino
+  end
+
+  def monkeys
+    casino.monkeys
+  end
+
+  def bananas_bet
+    Money.from_amount(5, 'BAN')
+  end
+
+  def bananas_jackpot
+    bananas_bet * monkeys.count
   end
 end
