@@ -1,15 +1,15 @@
 import Vue from 'vue/dist/vue.esm';
-import App from '../app.vue';
 import '../css/application.css';
+import Casino from '../components/casino.vue';
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
-    el: '#vue-app',
+    el: '#app',
     data: {
       message: 'Victoria!',
     },
-    components: { App },
+    components: { Casino },
   });
 
-  return app;
+  return null;
 });
