@@ -1,4 +1,5 @@
 class Casino < ApplicationRecord
+  include PowerTypes::Observable
   include LedgerizerTenant
 
   has_many :monkeys, dependent: :destroy
