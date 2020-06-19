@@ -19,14 +19,15 @@
           :key="monkey.id"
         >
           <td>{{ monkey.id }}</td>
-          <td>{{ monkey.attributes.name }}</td>
+          <td>{{ monkey.name }}</td>
+          <td>{{ monkey.bananas }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 </template>
 <script>
-import axios from 'axios';
+import getMonkeys from '../api/monkeys';
 
 export default {
   props: {
@@ -41,9 +42,7 @@ export default {
     };
   },
   mounted() {
-    axios
-      .get(`/api/v1/casinos/${this.casinoId}/monkeys`)
-      .then((response) => (this.monkeys = response.data.data));
+    getMonkeys(this.casinoId).then((response) => (this.monkeys = response));
   },
   methods: {
   },

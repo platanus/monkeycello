@@ -5,6 +5,10 @@ class Monkey < ApplicationRecord
   has_many :deposits, dependent: :destroy
   has_many :withdrawals, dependent: :destroy
   has_many :bets_won, class_name: "Bet", foreign_key: :winner_id, dependent: :destroy
+
+  def wallet_account
+    accounts.find_by(name: :wallet)
+  end
 end
 
 # == Schema Information

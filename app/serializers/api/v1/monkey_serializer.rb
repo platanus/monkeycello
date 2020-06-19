@@ -4,7 +4,10 @@ class Api::V1::MonkeySerializer < ActiveModel::Serializer
   attributes(
     :casino_id,
     :name,
-    :created_at,
-    :updated_at
+    :bananas
   )
+
+  def bananas
+    object.wallet_account.balance.format
+  end
 end
