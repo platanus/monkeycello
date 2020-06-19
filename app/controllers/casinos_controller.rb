@@ -4,5 +4,4 @@ class CasinosController < ApplicationController
     redirect_to root_path unless @casino
   end
 
-
 end
