@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>Casino component</h1>
+    <button @click="bet">
+      Apostar
+    </button>
     <table>
       <tr>
         <th>
@@ -28,6 +31,7 @@
 </template>
 <script>
 import getMonkeys from '../api/monkeys';
+import postBet from '../api/bets';
 
 export default {
   props: {
@@ -45,6 +49,9 @@ export default {
     getMonkeys(this.casinoId).then((response) => (this.monkeys = response));
   },
   methods: {
+    bet() {
+      postBet(this.casinoId);
+    },
   },
 };
 </script>
