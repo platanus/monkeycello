@@ -9,7 +9,7 @@
     </button>
     {{ this.monkeys }}
     <p v-if="showWinner">
-      ID Ganador: {{ lastWinner }}
+      ID Ganador: {{ lastWinnerId }}
     </p>
     <button @click="bet">
       Apostar
@@ -30,10 +30,12 @@
         <tr
           v-for="monkey in monkeys"
           :key="monkey.id"
+          :class="{ winner: monkey.id == lastWinnerId && showWinner }"
         >
           <td>{{ monkey.id }}</td>
           <td>{{ monkey.name }}</td>
           <td>{{ monkey.bananas }}</td>
+          <td> {{ monkey.id == lastWinnerId && showWinner ? '🎉🎉🎉': '' }}</td>
         </tr>
       </tbody>
     </table>
@@ -53,7 +55,7 @@ export default {
   data() {
     return {
       monkeys: null,
-      lastWinner: null,
+      lastWinnerId: null,
       thereIsWinner: false,
       showWinner: false,
     };
@@ -66,7 +68,7 @@ export default {
       postBet(this.casinoId).then((response) => {
         this.thereIsWinner = true;
         this.showWinner = false;
-        this.lastWinner = response.winner_id;
+        this.lastWinnerId = response.winner_id;
       });
     },
     showWinnerClick() {
@@ -77,3 +79,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.winner {
+  color: green
+}
+</style>
