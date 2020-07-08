@@ -11,5 +11,5 @@ document.addEventListener('DOMContentLoaded', () => {
     components: { Casino },
   });
 
-  return null;
+  return app;
 });

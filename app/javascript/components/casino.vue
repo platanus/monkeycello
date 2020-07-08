@@ -1,49 +1,27 @@
 <template>
   <div>
     <h1>Casino component</h1>
-    <button
-      v-if="thereIsWinner"
-      @click="showWinnerClick"
-    >
-      Mostrar ganador
-    </button>
-    {{ this.monkeys }}
-    <p v-if="showWinner">
-      ID Ganador: {{ lastWinnerId }}
-    </p>
-    <button @click="bet">
-      Apostar
-    </button>
-    <table>
-      <tr>
-        <th>
-          ID
-        </th>
-        <th>
-          Nombre
-        </th>
-        <th>
-          Bananas
-        </th>
-      </tr>
-      <tbody>
-        <tr
-          v-for="monkey in monkeys"
-          :key="monkey.id"
-          :class="{ winner: monkey.id == lastWinnerId && showWinner }"
-        >
-          <td>{{ monkey.id }}</td>
-          <td>{{ monkey.name }}</td>
-          <td>{{ monkey.bananas }}</td>
-          <td> {{ monkey.id == lastWinnerId && showWinner ? '🎉🎉🎉': '' }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <winner
+      @show-winner-click="showWinnerClick"
+      :show-winner="showWinner"
+      :there-is-winner="thereIsWinner"
+      :last-winner-id="lastWinnerId"
+    />
+    <monkey-list
+      :monkey-list="monkeys"
+      :show-winner="showWinner"
+      :last-winner-id="lastWinnerId"
+    />
+    <bet-button @bet="bet" />
   </div>
 </template>
 <script>
+
 import getMonkeys from '../api/monkeys';
 import postBet from '../api/bets';
+import MonkeyList from './monkey-list';
+import BetButton from './bet-button';
+import Winner from './winner';
 
 export default {
   props: {
@@ -76,6 +54,11 @@ export default {
       this.showWinner = true;
       getMonkeys(this.casinoId).then((response) => (this.monkeys = response));
     },
+  },
+  components: {
+    MonkeyList,
+    BetButton,
+    Winner,
   },
 };
 </script>
