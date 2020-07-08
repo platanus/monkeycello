@@ -1,15 +1,12 @@
 <template>
   <div>
     <h1>Casino component</h1>
-    <button
-      v-if="thereIsWinner"
-      @click="showWinnerClick"
-    >
-      Mostrar ganador
-    </button>
-    <p v-if="showWinner">
-      ID Ganador: {{ lastWinnerId }}
-    </p>
+    <winner
+      @show-winner-click="showWinnerClick"
+      :show-winner="showWinner"
+      :there-is-winner="thereIsWinner"
+      :last-winner-id="lastWinnerId"
+    />
     <monkey-list
       :monkey-list="monkeys"
       :show-winner="showWinner"
@@ -24,6 +21,7 @@ import getMonkeys from '../api/monkeys';
 import postBet from '../api/bets';
 import MonkeyList from './monkey-list';
 import BetButton from './bet-button';
+import Winner from './winner';
 
 export default {
   props: {
@@ -58,8 +56,9 @@ export default {
     },
   },
   components: {
-    'monkey-list': MonkeyList,
-    'bet-button': BetButton,
+    MonkeyList,
+    BetButton,
+    Winner,
   },
 };
 </script>
