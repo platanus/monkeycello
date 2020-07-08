@@ -10,14 +10,12 @@
     <p v-if="showWinner">
       ID Ganador: {{ lastWinnerId }}
     </p>
-    <button @click="bet">
-      Apostar
-    </button>
     <monkey-list
       :monkey-list="monkeys"
       :show-winner="showWinner"
       :last-winner-id="lastWinnerId"
     />
+    <bet-button @bet="bet" />
   </div>
 </template>
 <script>
@@ -25,6 +23,7 @@
 import getMonkeys from '../api/monkeys';
 import postBet from '../api/bets';
 import MonkeyList from './monkey-list';
+import BetButton from './bet-button';
 
 export default {
   props: {
@@ -60,6 +59,7 @@ export default {
   },
   components: {
     'monkey-list': MonkeyList,
+    'bet-button': BetButton,
   },
 };
 </script>
