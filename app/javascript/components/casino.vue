@@ -7,43 +7,24 @@
     >
       Mostrar ganador
     </button>
-    {{ this.monkeys }}
     <p v-if="showWinner">
       ID Ganador: {{ lastWinnerId }}
     </p>
     <button @click="bet">
       Apostar
     </button>
-    <table>
-      <tr>
-        <th>
-          ID
-        </th>
-        <th>
-          Nombre
-        </th>
-        <th>
-          Bananas
-        </th>
-      </tr>
-      <tbody>
-        <tr
-          v-for="monkey in monkeys"
-          :key="monkey.id"
-          :class="{ winner: monkey.id == lastWinnerId && showWinner }"
-        >
-          <td>{{ monkey.id }}</td>
-          <td>{{ monkey.name }}</td>
-          <td>{{ monkey.bananas }}</td>
-          <td> {{ monkey.id == lastWinnerId && showWinner ? '🎉🎉🎉': '' }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <monkey-list
+      :monkey-list="monkeys"
+      :show-winner="showWinner"
+      :last-winner-id="lastWinnerId"
+    />
   </div>
 </template>
 <script>
+
 import getMonkeys from '../api/monkeys';
 import postBet from '../api/bets';
+import MonkeyList from './monkey-list';
 
 export default {
   props: {
@@ -76,6 +57,9 @@ export default {
       this.showWinner = true;
       getMonkeys(this.casinoId).then((response) => (this.monkeys = response));
     },
+  },
+  components: {
+    'monkey-list': MonkeyList,
   },
 };
 </script>
