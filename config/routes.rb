@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :casinos, only: %i[show]
+  resources :casinos, only: [:index, :show]
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
