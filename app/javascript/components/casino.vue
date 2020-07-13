@@ -17,11 +17,10 @@
 </template>
 <script>
 
-import getMonkeys from '../api/monkeys';
-import postBet from '../api/bets';
 import MonkeyList from './monkey-list';
 import BetButton from './bet-button';
 import Winner from './winner';
+import { mapState } from 'vuex';
 
 export default {
   props: {
@@ -32,27 +31,28 @@ export default {
   },
   data() {
     return {
-      monkeys: null,
-      lastWinnerId: null,
       thereIsWinner: false,
       showWinner: false,
     };
   },
+  computed: mapState([
+    'monkeys', 'lastWinnerId',
+  ]),
   mounted() {
-    getMonkeys(this.casinoId).then((response) => (this.monkeys = response));
+    this.$store.dispatch('getMonkeysAction', { casinoId: this.casinoId });
   },
   methods: {
     bet() {
-      postBet(this.casinoId).then((response) => {
-        this.thereIsWinner = true;
-        this.showWinner = false;
-        this.lastWinnerId = response.winner_id;
-      });
+      this.$store.dispatch('postBetAction', { casinoId: this.casinoId })
+        .then(() => {
+          this.thereIsWinner = true;
+          this.showWinner = false;
+        });
     },
     showWinnerClick() {
       this.thereIsWinner = false;
       this.showWinner = true;
-      getMonkeys(this.casinoId).then((response) => (this.monkeys = response));
+      this.$store.dispatch('getMonkeysAction', { casinoId: this.casinoId });
     },
   },
   components: {
@@ -65,6 +65,6 @@ export default {
 
 <style>
 .winner {
-  color: green
+  color: green;
 }
 </style>
