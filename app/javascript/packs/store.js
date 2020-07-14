@@ -1,8 +1,9 @@
 import Vue from 'vue/dist/vue.esm';
 import Vuex from 'vuex';
-import getMonkeys from '../../javascript/api/monkeys';
+import { getMonkeys, getAllMonkeys } from '../../javascript/api/monkeys';
 import postBet from '../../javascript/api/bets';
 import getCasinos from '../../javascript/api/casinos';
+import topTenWinners from './helper';
 
 Vue.use(Vuex);
 
@@ -11,6 +12,7 @@ const store = new Vuex.Store({
     monkeys: null,
     lastWinnerId: null,
     casinos: null,
+    topTen: null,
   },
   mutations: {
     setMonkeys(state, payload) {
@@ -22,12 +24,21 @@ const store = new Vuex.Store({
     setCasinos(state, payload) {
       state.casinos = payload;
     },
+    setTopTen(state, payload) {
+      state.topTen = topTenWinners(payload);
+    },
   },
   actions: {
     getMonkeysAction({ commit }, { casinoId }) {
       return getMonkeys(casinoId)
         .then((response) => {
           commit('setMonkeys', response);
+        });
+    },
+    updateTopTenAction({ commit }) {
+      return getAllMonkeys()
+        .then((response) => {
+          commit('setTopTen', response);
         });
     },
     getCasinosAction({ commit }) {

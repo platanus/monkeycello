@@ -13,6 +13,7 @@
       :last-winner-id="lastWinnerId"
     />
     <bet-button @bet="bet" />
+    <winners-ranking />
   </div>
 </template>
 <script>
@@ -20,6 +21,7 @@
 import MonkeyList from './monkey-list';
 import BetButton from './bet-button';
 import Winner from './winner';
+import WinnersRanking from './winners-ranking';
 import { mapState } from 'vuex';
 
 export default {
@@ -59,6 +61,7 @@ export default {
     MonkeyList,
     BetButton,
     Winner,
+    WinnersRanking,
   },
 };
 </script>
