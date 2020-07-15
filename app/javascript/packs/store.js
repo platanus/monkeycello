@@ -29,25 +29,25 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    getMonkeysAction({ commit }, { casinoId }) {
+    getMonkeysFromApi({ commit }, { casinoId }) {
       return getMonkeys(casinoId)
         .then((response) => {
           commit('setMonkeys', response);
         });
     },
-    updateTopTenAction({ commit }) {
+    updateTopTen({ commit }) {
       return getAllMonkeys()
         .then((response) => {
           commit('setTopTen', response);
         });
     },
-    getCasinosAction({ commit }) {
+    getCasinosFromApi({ commit }) {
       return getCasinos()
         .then((response) => {
           commit('setCasinos', response);
         });
     },
-    postBetAction({ commit }, { casinoId }) {
+    postBetFromApi({ commit }, { casinoId }) {
       return postBet(casinoId)
         .then((response) => {
           commit('setWinner', response.winner_id);

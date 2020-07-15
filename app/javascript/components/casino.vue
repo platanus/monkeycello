@@ -41,11 +41,11 @@ export default {
     'monkeys', 'lastWinnerId',
   ]),
   mounted() {
-    this.$store.dispatch('getMonkeysAction', { casinoId: this.casinoId });
+    this.$store.dispatch('getMonkeysFromApi', { casinoId: this.casinoId });
   },
   methods: {
     bet() {
-      this.$store.dispatch('postBetAction', { casinoId: this.casinoId })
+      this.$store.dispatch('postBetFromApi', { casinoId: this.casinoId })
         .then(() => {
           this.thereIsWinner = true;
           this.showWinner = false;
@@ -54,7 +54,7 @@ export default {
     showWinnerClick() {
       this.thereIsWinner = false;
       this.showWinner = true;
-      this.$store.dispatch('getMonkeysAction', { casinoId: this.casinoId });
+      this.$store.dispatch('getMonkeysFromApi', { casinoId: this.casinoId });
     },
   },
   components: {

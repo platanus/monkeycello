@@ -35,7 +35,7 @@ export default {
     'casinos',
   ]),
   mounted() {
-    this.$store.dispatch('getCasinosAction');
+    this.$store.dispatch('getCasinosFromApi');
   },
 };
 </script>
