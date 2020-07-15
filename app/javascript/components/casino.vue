@@ -13,6 +13,7 @@
       :last-winner-id="lastWinnerId"
     />
     <bet-button @bet="bet" />
+    <winners-ranking />
   </div>
 </template>
 <script>
@@ -20,6 +21,7 @@
 import MonkeyList from './monkey-list';
 import BetButton from './bet-button';
 import Winner from './winner';
+import WinnersRanking from './winners-ranking';
 import { mapState } from 'vuex';
 
 export default {
@@ -39,11 +41,11 @@ export default {
     'monkeys', 'lastWinnerId',
   ]),
   mounted() {
-    this.$store.dispatch('getMonkeysAction', { casinoId: this.casinoId });
+    this.$store.dispatch('getMonkeysFromApi', { casinoId: this.casinoId });
   },
   methods: {
     bet() {
-      this.$store.dispatch('postBetAction', { casinoId: this.casinoId })
+      this.$store.dispatch('postBetFromApi', { casinoId: this.casinoId })
         .then(() => {
           this.thereIsWinner = true;
           this.showWinner = false;
@@ -52,13 +54,14 @@ export default {
     showWinnerClick() {
       this.thereIsWinner = false;
       this.showWinner = true;
-      this.$store.dispatch('getMonkeysAction', { casinoId: this.casinoId });
+      this.$store.dispatch('getMonkeysFromApi', { casinoId: this.casinoId });
     },
   },
   components: {
     MonkeyList,
     BetButton,
     Winner,
+    WinnersRanking,
   },
 };
 </script>

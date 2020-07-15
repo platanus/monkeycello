@@ -1,6 +1,7 @@
 import Vue from 'vue/dist/vue.esm';
 import '../css/application.css';
 import Casino from '../components/casino.vue';
+import CasinoList from '../components/casino-list';
 import store from './store';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     data: {
       message: 'Victoria!',
     },
-    components: { Casino },
+    components: { Casino, CasinoList },
   });
 
   return app;

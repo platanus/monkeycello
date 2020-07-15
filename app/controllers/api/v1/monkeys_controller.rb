@@ -26,7 +26,7 @@ class Api::V1::MonkeysController < Api::V1::BaseController
   end
 
   def monkeys
-    @monkeys ||= casino.monkeys
+    @monkeys ||= params[:casino_id] ? casino.monkeys : Monkey.all
   end
 
   def casino
